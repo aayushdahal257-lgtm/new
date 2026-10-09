@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>For my Luck Charm</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #eef4e6;
+        --ink: #16301f;
+        --soft: #4b6a55;
+        --gold: #a8720f;
+        --leaf: #2f7d4f;
+        --glow: #f3e2b0;
+        --line: #c5d9b9;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #10291c;
+          --ink: #f1ead6;
+          --soft: #b5c9b4;
+          --gold: #e8b94d;
+          --leaf: #6fb487;
+          --glow: #2a4a2c;
+          --line: #2c5640;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #10291c;
+        --ink: #f1ead6;
+        --soft: #b5c9b4;
+        --gold: #e8b94d;
+        --leaf: #6fb487;
+        --glow: #2a4a2c;
+        --line: #2c5640;
+      }
+      html {
+        scroll-padding-top: env(safe-area-inset-top, 0px);
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          400 18px/1.65 Nunito,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          sans-serif;
+      }
+      main {
+        max-width: 34rem;
+        margin: 0 auto;
+        padding: 2rem 1.4rem 3rem;
+      }
+      h1,
+      h2,
+      .note {
+        font-family: Caveat, "Bradley Hand", "Segoe Script", cursive;
+        font-weight: 700;
+        line-height: 1.15;
+      }
+      h1 {
+        font-size: 3.4rem;
+        margin: 0 0 0.4rem;
+        text-align: center;
+      }
+      h2 {
+        font-size: 2.2rem;
+        margin: 3rem 0 0.6rem;
+      }
+      .hero {
+        text-align: center;
+      }
+      .hero p {
+        margin: 0.2rem auto 0;
+        color: var(--soft);
+        max-width: 24rem;
+      }
+      #clover {
+        display: block;
+        margin: 1.6rem auto 0.4rem;
+        width: 11rem;
+        height: 13rem;
+        background: none;
+        border: 0;
+        cursor: pointer;
+        padding: 0;
+        border-radius: 50%;
+      }
+      #clover:focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 4px;
+      }
+      #clover .glow {
+        fill: var(--glow);
+      }
+      #clover .leaves {
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+      #clover.spin .leaves {
+        animation: turn 0.7s ease-out;
+      }
+      @keyframes turn {
+        from {
+          transform: rotate(-90deg) scale(0.85);
+        }
+        to {
+          transform: rotate(0) scale(1);
+        }
+      }
+      .note {
+        font-size: 2rem;
+        min-height: 7.5rem;
+        text-align: center;
+        margin: 0.6rem 0 0;
+        padding: 0 0.4rem;
+      }
+      .note.in {
+        animation: rise 0.5s ease-out;
+      }
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      #count {
+        text-align: center;
+        color: var(--soft);
+        font-size: 0.9rem;
+        min-height: 1.4rem;
+        margin: 0.2rem 0 0;
+      }
+      details {
+        border-bottom: 1px solid var(--line);
+      }
+      summary {
+        cursor: pointer;
+        padding: 0.9rem 0;
+        font-weight: 600;
+        list-style: none;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary::before {
+        content: "+";
+        display: inline-block;
+        width: 1.4rem;
+        color: var(--gold);
+        font-weight: 700;
+      }
+      details[open] summary::before {
+        content: "\2212";
+      }
+      summary:focus-visible {
+        outline: 3px solid var(--gold);
+        outline-offset: 2px;
+      }
+      details p {
+        margin: 0 0 1rem 1.4rem;
+        color: var(--soft);
+      }
+      .promise {
+        border-left: 4px solid var(--gold);
+        padding: 0.1rem 0 0.1rem 1rem;
+        margin: 1rem 0;
+      }
+      .end {
+        text-align: center;
+        margin-top: 3rem;
+      }
+      .end .note {
+        min-height: 0;
+        font-size: 2.4rem;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #clover.spin .leaves,
+        .note.in {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <h1>Hey, Luck Charm</h1>
+        <p>
+          Baby, I made this just for you. Tap the clover and read what's inside.
+        </p>
+        <button id="clover" type="button" aria-label="Tap for a note from me">
+          <svg
+            viewBox="0 0 104 124"
+            width="100%"
+            height="100%"
+            aria-hidden="true"
+          >
+            <defs>
+              <path
+                id="h"
+                d="M0 0C-10-8-24-18-24-32C-24-42-10-48 0-36C10-48 24-42 24-32C24-18 10-8 0 0Z"
+              />
+            </defs>
+            <circle class="glow" cx="52" cy="52" r="50" />
+            <path
+              d="M52 52C54 76 60 92 72 108"
+              fill="none"
+              stroke="#2f7d4f"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+            <g transform="translate(52 52)">
+              <g
+                class="leaves"
+                fill="#3f9a63"
+                stroke="#2f7d4f"
+                stroke-width="2"
+                stroke-linejoin="round"
+              >
+                <use href="#h" />
+                <use href="#h" transform="rotate(90)" />
+                <use href="#h" transform="rotate(180)" />
+                <use href="#h" transform="rotate(270)" />
+              </g>
+            </g>
+          </svg>
+        </button>
+        <p class="note" id="note" aria-live="polite">Tap the clover</p>
+        <p id="count"></p>
+      </section>
+
+      <h2>Open when...</h2>
+      <details>
+        <summary>Open when you miss me</summary>
+        <p>
+          Close your eyes and picture the next time I get to hug you. I'm
+          counting down to it too. Until then, send me a voice note and I'll
+          answer right away.
+        </p>
+      </details>
+      <details>
+        <summary>Open when you're sad</summary>
+        <p>
+          You don't have to be okay. Call me. I'll listen first, and I won't try
+          to fix anything unless you ask me to.
+        </p>
+      </details>
+      <details>
+        <summary>Open when you're mad at me</summary>
+        <p>
+          That's fair, and you're allowed to be. I'm not going anywhere. Tell me
+          everything and I'll listen without arguing back.
+        </p>
+      </details>
+      <details>
+        <summary>Open when you can't sleep</summary>
+        <p>
+          Think of one good thing from today, even a tiny one. I'm thinking of
+          you from far away, so you're not alone.
+        </p>
+      </details>
+
+      <h2>What I promise you</h2>
+      <p class="promise">I'll listen first, before I explain.</p>
+      <p class="promise">I'll be honest with you, even when it's hard.</p>
+      <p class="promise">
+        I'll show up for you from far away, in small ways, every day.
+      </p>
+
+      <section class="end">
+        <p class="note">I love you, Baby.</p>
+        <p style="color: var(--soft)">Made by hand, just for you.</p>
+      </section>
+    </main>
+    <script>
+      (function () {
+        var notes = [
+          "You're my luck charm. Everything feels luckier with you in it.",
+          "Distance is just a number. It has never changed how I feel about you.",
+          "I know I hurt you, and I'm sorry. Not a quick sorry. A real one.",
+          "I'm learning from it, and I'll keep showing you with what I do, not only what I say.",
+          "You deserve to feel chosen every day, not only when it's easy.",
+          "On your hard days I wish I could sit right next to you. I'm here on the other end.",
+          "Thank you for sticking with me, even when I made it hard.",
+          "I can't wait for the day the distance is gone and I can hug you for real.",
+          "You matter to me more than I know how to say. So I made you this.",
+          "I love you, Baby.",
+        ];
+        var i = -1,
+          btn = document.getElementById("clover"),
+          out = document.getElementById("note"),
+          cnt = document.getElementById("count");
+        btn.addEventListener("click", function () {
+          i = (i + 1) % notes.length;
+          out.classList.remove("in");
+          btn.classList.remove("spin");
+          void out.offsetWidth;
+          out.textContent = notes[i];
+          out.classList.add("in");
+          btn.classList.add("spin");
+          cnt.textContent = i + 1 + " of " + notes.length;
+        });
+      })();
+    </script>
+  </body>
+</html>
